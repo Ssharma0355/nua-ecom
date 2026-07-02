@@ -3,22 +3,23 @@ import ProductCard from "./ProductCard";
 import Loading from "../../pages/Loading";
 import "../../assets/ProductList.scss";
 import ProductCardSkeleton from "../../pages/ProductCardSkeleton/ProductCardSkeleton";
-import { GrPrevious,GrNext   } from "react-icons/gr";
-
+import { GrPrevious, GrNext } from "react-icons/gr";
 
 function ProductList() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Pagination Logic
   const Number_Of_Product_In_Page = 10;
   const Number_Of_Products = products.length;
-  const Number_Of_Pages = Math.ceil(Number_Of_Products/Number_Of_Product_In_Page)
-  const Start = currentIndex*Number_Of_Product_In_Page;
-  const End = Start+Number_Of_Product_In_Page;
+  const Number_Of_Pages = Math.ceil(
+    Number_Of_Products / Number_Of_Product_In_Page
+  );
+  const Start = currentIndex * Number_Of_Product_In_Page;
+  const End = Start + Number_Of_Product_In_Page;
 
   const getProducts = async () => {
     try {
@@ -36,69 +37,65 @@ function ProductList() {
     getProducts();
   }, []);
 
-  const selectCurrentIndex=(index)=>{
-    setCurrentIndex(index)
-  }
-  const nextPage =()=>{
-    setCurrentIndex(prev => prev+1)
-  }
-  const prevPage = ()=>{
-    setCurrentIndex(prev => prev-1)
-
-  }
+  const selectCurrentIndex = (index) => {
+    setCurrentIndex(index);
+  };
+  const nextPage = () => {
+    setCurrentIndex((prev) => prev + 1);
+  };
+  const prevPage = () => {
+    setCurrentIndex((prev) => prev - 1);
+  };
   if (!isLoading) {
-    return <ProductCardSkeleton/>;
+    return <ProductCardSkeleton />;
   }
 
   return (
     <div>
-        <section className="product-list">  
-     {products.slice(Start,End).map((product) => (
-       <ProductCard
-         key={product.id}
-         title={product.title}
-         prodImg={product.thumbnail}
-         category={product.category}
-         rating={product.rating}
-         discount={product.discountPercentage}
-         stock={product.stock}
-         description={product.description}
-         price={product.price}
-       />
-     ))}
-   </section>
-   <div className="pagination">
-  <button
-    className="page-btn"
-    onClick={prevPage}
-    disabled={currentIndex === 0}
-  >
-    <GrPrevious />
-  </button>
+      <section className="product-list">
+        {products.slice(Start, End).map((product) => (
+          <ProductCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            prodImg={product.thumbnail}
+            category={product.category}
+            rating={product.rating}
+            discount={product.discountPercentage}
+            stock={product.stock}
+            description={product.description}
+            price={product.price}
+          />
+        ))}
+      </section>
+      <div className="pagination">
+        <button
+          className="page-btn"
+          onClick={prevPage}
+          disabled={currentIndex === 0}
+        >
+          <GrPrevious />
+        </button>
 
-  {[...Array(Number_Of_Pages).keys()].map((n) => (
-    <button
-      key={n}
-      className={`page-number ${
-        currentIndex === n ? "active" : ""
-      }`}
-      onClick={() => selectCurrentIndex(n)}
-    >
-      {n + 1}
-    </button>
-  ))}
+        {[...Array(Number_Of_Pages).keys()].map((n) => (
+          <button
+            key={n}
+            className={`page-number ${currentIndex === n ? "active" : ""}`}
+            onClick={() => selectCurrentIndex(n)}
+          >
+            {n + 1}
+          </button>
+        ))}
 
-  <button
-    className="page-btn"
-    onClick={nextPage}
-    disabled={currentIndex === Number_Of_Pages - 1}
-  >
-    <GrNext />
-  </button>
-</div>
-
+        <button
+          className="page-btn"
+          onClick={nextPage}
+          disabled={currentIndex === Number_Of_Pages - 1}
+        >
+          <GrNext />
+        </button>
+      </div>
     </div>
-   
   );
 }
 
