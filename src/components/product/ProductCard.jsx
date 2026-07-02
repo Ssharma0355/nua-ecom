@@ -1,8 +1,11 @@
 import "../../assets/ProductCard.scss";
 import { CiStar } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+
 
 function ProductCard({
   title,
+  id,
   prodImg,
   category,
   rating,
@@ -10,8 +13,11 @@ function ProductCard({
   stock,
   price,
 }) {
+  const navigate = useNavigate();
   return (
-    <div className="product-card">
+    <div 
+    onClick={() => navigate(`/product/${id}`)}
+     className="product-card">
       <img src={prodImg} alt={title} />
 
       <div className="product-info">
