@@ -4,11 +4,14 @@ import { CiStar } from "react-icons/ci";
 import ProductDetailsSkeleton from "./ProductCardSkeleton/ProductDetailsSkeleton";
 import "../assets/ProductDetail.scss";
 import { GrPrevious } from "react-icons/gr";
+import { useCart } from "../hooks/useCart";
 
 
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate()
+  const { dispatch } = useCart();
+
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -33,7 +36,20 @@ function ProductDetail() {
   useEffect(() => {
     getProduct();
   }, [id]);
-
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+  
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        id: product.id,
+        title:product.title,
+        price:product.price,
+        thumbnail: product.thumbnail,
+        category: product.category,
+      },
+    });
+  };
   if (isLoading) return <ProductDetailsSkeleton />;
 
   return (
@@ -118,7 +134,7 @@ function ProductDetail() {
 
         </div>
 
-        <button className="cart-btn">
+        <button onClick={handleAddToCart} className="cart-btn">
           Add to Cart
         </button>
 
