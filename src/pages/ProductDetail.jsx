@@ -70,6 +70,10 @@ function ProductDetail() {
         <span className="category">{product.category}</span>
 
         <h1>{product.title}</h1>
+        
+        <p className="description">
+          {product.description}
+        </p>
 
         <p className="description">
           {product.description}
