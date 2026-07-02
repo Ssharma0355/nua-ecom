@@ -52,28 +52,7 @@ function ProductList() {
 
   return (
     <div>
-       <div style={{display:"flex",gap:"12px"}}>
-        <button onClick={prevPage} style={{padding:"12px"}}
-        disabled={currentIndex === 0}
-        ><GrPrevious /></button>
-        
-        {[...Array(Number_Of_Pages).keys()].map(n=>(
-        <p key={n}
-        onClick={()=>{selectCurrentIndex(n)}}
-        style={{
-          border:"1px solid black",
-          padding:"12px",
-          borderRadius:"8px"
-        }}
-        
-        >{n+1}</p>
-        ))}
-        <button onClick={nextPage} style={{padding:"12px"}} disabled={currentIndex === Number_Of_Pages-1 }><GrNext />
-        </button>
-        </div>
-        <section className="product-list">
-          
-     
+        <section className="product-list">  
      {products.slice(Start,End).map((product) => (
        <ProductCard
          key={product.id}
@@ -88,6 +67,35 @@ function ProductList() {
        />
      ))}
    </section>
+   <div className="pagination">
+  <button
+    className="page-btn"
+    onClick={prevPage}
+    disabled={currentIndex === 0}
+  >
+    <GrPrevious />
+  </button>
+
+  {[...Array(Number_Of_Pages).keys()].map((n) => (
+    <button
+      key={n}
+      className={`page-number ${
+        currentIndex === n ? "active" : ""
+      }`}
+      onClick={() => selectCurrentIndex(n)}
+    >
+      {n + 1}
+    </button>
+  ))}
+
+  <button
+    className="page-btn"
+    onClick={nextPage}
+    disabled={currentIndex === Number_Of_Pages - 1}
+  >
+    <GrNext />
+  </button>
+</div>
 
     </div>
    
