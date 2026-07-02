@@ -5,9 +5,13 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Logo } from "../../assets/asset";
 import "../../assets/Navbar.scss";
+import { useCart } from "../../hooks/useCart";
 
 function Navbar({ openCart }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { cart } = useCart();
+
+  const itemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <nav className="navbar">
@@ -28,6 +32,8 @@ function Navbar({ openCart }) {
       <div className="nav-icons">
         <span className="cart-icon" onClick={openCart}>
           <FaCartShopping />
+
+          {itemCount > 0 && <span className="badge">{itemCount}</span>}
         </span>
 
         <span className="user-icon">
