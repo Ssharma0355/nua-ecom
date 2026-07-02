@@ -1,10 +1,11 @@
 import React from 'react'
+import ProductCard from '../components/product/ProductCard'
 
 function Home() {
   return (
     <div>
-        Home
-      
+        
+        <ProductCard />
     </div>
   )
 }
