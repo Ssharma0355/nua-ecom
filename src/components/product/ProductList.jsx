@@ -13,7 +13,7 @@ function ProductList() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Pagination Logic
-  const Number_Of_Product_In_Page = 10;
+  const Number_Of_Product_In_Page = 12;
   const Number_Of_Products = products.length;
   const Number_Of_Pages = Math.ceil(
     Number_Of_Products / Number_Of_Product_In_Page
@@ -23,14 +23,14 @@ function ProductList() {
 
   const getProducts = async () => {
     try {
-      setIsLoading(false);
+      setIsLoading(true);
       const res = await fetch(`${baseUrl}/products?limit=1000`);
       const resJson = await res.json();
       setProducts(resJson.products);
     } catch (err) {
       setError(err.message);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
   useEffect(() => {
@@ -46,7 +46,7 @@ function ProductList() {
   const prevPage = () => {
     setCurrentIndex((prev) => prev - 1);
   };
-  if (!isLoading) {
+  if (isLoading) {
     return <ProductCardSkeleton />;
   }
 

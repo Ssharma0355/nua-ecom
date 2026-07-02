@@ -10,7 +10,6 @@ function ProductCard({
   category,
   rating,
   discount,
-  stock,
   price,
 }) {
   const navigate = useNavigate();
