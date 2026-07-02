@@ -1,6 +1,7 @@
 import "../../assets/ProductCard.scss";
 import { CiStar } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
 
 function ProductCard({
   id,
@@ -12,18 +13,27 @@ function ProductCard({
   price,
 }) {
   const navigate = useNavigate();
+  const { dispatch } = useCart();
+
+  
 
   const handleCardClick = () => {
     navigate(`/product/${id}`);
   };
 
   const handleAddToCart = (e) => {
-    e.stopPropagation(); // Prevent card click
-
-    console.log("Added to cart", id);
-
-    // dispatch(addToCart(...))
-    // or call your context function here
+    e.stopPropagation();
+  
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        id,
+        title,
+        price,
+        thumbnail: prodImg,
+        category,
+      },
+    });
   };
 
   return (
