@@ -1,4 +1,4 @@
-import "../../assets/ProductCardSkeleton.scss";
+import "../../styles/ProductCardSkeleton.scss";
 
 function ProductCardSkeleton() {
   return (

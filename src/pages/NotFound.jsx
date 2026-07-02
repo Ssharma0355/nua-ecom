@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../assets/asset";
-import "../assets/NotFound.scss";
+import "../styles/NotFound.scss";
 
 function NotFound() {
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Logo } from "../../assets/asset";
-import "../../assets/Navbar.scss";
+import "../../styles/Navbar.scss";
 import { useCart } from "../../hooks/useCart";
 
 function Navbar({ openCart }) {

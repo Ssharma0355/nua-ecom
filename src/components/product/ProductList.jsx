@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-import Loading from "../../pages/Loading";
-import "../../assets/ProductList.scss";
+import "../../styles/ProductList.scss";
 import ProductCardSkeleton from "../../pages/ProductCardSkeleton/ProductCardSkeleton";
 import { GrPrevious, GrNext } from "react-icons/gr";
 
