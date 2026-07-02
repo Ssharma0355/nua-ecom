@@ -2,10 +2,9 @@ import "../../assets/ProductCard.scss";
 import { CiStar } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 
-
 function ProductCard({
-  title,
   id,
+  title,
   prodImg,
   category,
   rating,
@@ -13,10 +12,22 @@ function ProductCard({
   price,
 }) {
   const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/product/${id}`);
+  };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); // Prevent card click
+
+    console.log("Added to cart", id);
+
+    // dispatch(addToCart(...))
+    // or call your context function here
+  };
+
   return (
-    <div 
-    onClick={() => navigate(`/product/${id}`)}
-     className="product-card">
+    <div className="product-card" onClick={handleCardClick}>
       <img src={prodImg} alt={title} />
 
       <div className="product-info">
@@ -31,12 +42,13 @@ function ProductCard({
 
         <div className="price-section">
           <h2>${price}</h2>
-
           <span className="discount">{discount}% OFF</span>
         </div>
-
-        <button>Add to Cart</button>
       </div>
+
+      <button onClick={handleAddToCart}>
+        Add to Cart
+      </button>
     </div>
   );
 }
