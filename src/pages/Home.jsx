@@ -1,11 +1,10 @@
-import React from 'react'
-import ProductCard from '../components/product/ProductCard'
+import React, { useEffect, useState } from 'react'
+import ProductList from '../components/product/ProductList'
 
 function Home() {
   return (
     <div>
-        
-        <ProductCard />
+     <ProductList />
     </div>
   )
 }
