@@ -1,6 +1,6 @@
 import { FaTimes } from "react-icons/fa";
 import { useCart } from "../hooks/useCart";
-import "../assets/Cart.scss";
+import "../styles/Cart.scss";
 
 function Cart({ onClose }) {
   const { cart, dispatch } = useCart();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
 import ProductDetailsSkeleton from "./ProductCardSkeleton/ProductDetailsSkeleton";
-import "../assets/ProductDetail.scss";
+import "../styles/ProductDetail.scss";
 import { GrPrevious } from "react-icons/gr";
 import { useCart } from "../hooks/useCart";
 

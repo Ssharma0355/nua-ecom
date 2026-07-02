@@ -1,4 +1,4 @@
-import "../../assets/ProductCard.scss";
+import "../../styles/ProductCard.scss";
 import { CiStar } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
