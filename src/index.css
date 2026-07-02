@@ -2,3 +2,6 @@
   padding: 0%;
   margin: 0%;
 }
+:root {
+  --toastify-color-error: hsl(6, 78%, 57%);
+}
