@@ -1,0 +1,50 @@
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+  
+    display: flex;
+    justify-content: flex-end;
+  
+    z-index: 2000;
+  }
+  
+  .cart-modal {
+    width: 420px;
+    height: 100vh;
+    background: #fff;
+  
+    padding: 24px;
+  
+    animation: slideIn .3s ease;
+  
+    position: relative;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  
+    border: none;
+    background: none;
+    cursor: pointer;
+  
+    font-size: 22px;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+  
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cart-modal {
+      width: 100%;
+    }
+  }

@@ -6,38 +6,36 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Logo } from "../../assets/asset";
 import "../../assets/Navbar.scss";
 
-function Navbar() {
+function Navbar({ openCart }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="navbar">
-      <div className="logo">
+      <NavLink to="/" className="logo" onClick={() => setIsOpen(false)}>
         <img src={Logo} alt="Logo" />
-      </div>
+      </NavLink>
 
       <div className={`nav-links ${isOpen ? "active" : ""}`}>
         <NavLink to="/" onClick={() => setIsOpen(false)}>
           Home
         </NavLink>
 
-        <NavLink to="/products" onClick={() => setIsOpen(false)}>
-          Products
-        </NavLink>
-
-        <NavLink to="/cart" onClick={() => setIsOpen(false)}>
-          Cart
+        <NavLink to="/about" onClick={() => setIsOpen(false)}>
+          About
         </NavLink>
       </div>
 
       <div className="nav-icons">
-        <FaCartShopping />
-        <FaRegUserCircle />
+        <span className="cart-icon" onClick={openCart}>
+          <FaCartShopping />
+        </span>
+
+        <span className="user-icon">
+          <FaRegUserCircle />
+        </span>
       </div>
 
-      <button
-        className="menu-btn"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <button className="menu-btn" onClick={() => setIsOpen((prev) => !prev)}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
     </nav>
