@@ -12,7 +12,6 @@ function ProductDetail() {
   const navigate = useNavigate()
   const { dispatch } = useCart();
 
-
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const [product, setProduct] = useState(null);
@@ -50,6 +49,13 @@ function ProductDetail() {
       },
     });
   };
+
+  const selectColor=(id)=>{
+    setSelectedColor(id)
+  }
+  const selectSize =(id)=>{
+    setSelectedSize(id)
+  }
   if (isLoading) return <ProductDetailsSkeleton />;
 
   return (
@@ -85,7 +91,6 @@ function ProductDetail() {
           </div>
 
         </div>
-
         <div className="offer">
           {product.discountPercentage}% OFF
         </div>
