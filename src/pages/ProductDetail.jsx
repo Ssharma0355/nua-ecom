@@ -11,12 +11,6 @@ function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate()
   const { dispatch } = useCart();
-  const [selectedColor, setSelectedColor] = useState(1);
-  const [selectedSize, setSelectedSize] =useState(1);
-
-  const color =[{id:1, color:"black"},{ id:2, color:"white"},{id:3, color:"red"}]
-  const size = [{id:1, length:"S"},{id:2, length:"L"}, {id:3, length:"XL"}, {id:4, length:"XXL"}]
-
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -97,19 +91,6 @@ function ProductDetail() {
           </div>
 
         </div>
-        <div style={{display:"flex", gap:"8px"}}>
-          <p>Select Color</p>
-        {color.map(c=>(
-          <button onClick={()=>{selectColor(c.id)}} key={c.id} style={{backgroundColor:`${c.color}`,height:"20px", width:"20px", borderRadius:"100%", border:`${selectedColor === c.id ? "2px solid red":"1px solid black" }`}}></button>
-        ))}
-        </div>
-        <div style={{display:"flex", gap:"8px"}}>
-          <p>Select Size</p>
-        {size.map(s=>(
-          <button onClick={()=>{selectSize(s.id)}} key={s.id} style={{padding:"8px", borderRadius:"4px", border:"1px solid black", border:`${selectedSize === s.id?"1px solid gray":"none"}`}}>{s.length}</button>
-        ))}
-        </div>
-
         <div className="offer">
           {product.discountPercentage}% OFF
         </div>
