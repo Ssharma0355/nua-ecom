@@ -23,10 +23,6 @@ function Navbar({ openCart }) {
         <NavLink to="/" onClick={() => setIsOpen(false)}>
           Home
         </NavLink>
-
-        <NavLink to="/about" onClick={() => setIsOpen(false)}>
-          About
-        </NavLink>
       </div>
 
       <div className="nav-icons">

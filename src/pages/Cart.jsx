@@ -1,6 +1,8 @@
 import { FaTimes } from "react-icons/fa";
 import { useCart } from "../hooks/useCart";
 import "../styles/Cart.scss";
+import { FaCartShopping } from "react-icons/fa6";
+
 
 function Cart({ onClose }) {
   const { cart, dispatch } = useCart();
@@ -26,7 +28,7 @@ function Cart({ onClose }) {
 
         {cart.length === 0 ? (
           <div className="empty-cart">
-            <p>Your cart is empty 🛒</p>
+            <span style={{display:"flex", alignContent:"center",alignItems:"center"}}>Your cart is empty<FaCartShopping /></span>
           </div>
         ) : (
           <>
