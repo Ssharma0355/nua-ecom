@@ -82,7 +82,7 @@ function Cart({ onClose }) {
                         })
                       }
                     >
-                      Remove
+                      Remove Item
                     </button>
                   </div>
                 </div>
